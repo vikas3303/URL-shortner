@@ -15,6 +15,14 @@ const handleGenerateNewShortURL = async (req, res) => {
         );
     // let ShortURL=null;
     // console.log("ShortURL");
+    // const existingUrl = await URL.findOne({ redirectURL });
+    // if (existingUrl) {
+    //     return res.status(200).redirect(
+    //         `/?info=${encodeURIComponent(
+    //             `This URL is already shortened! Short URL: ${existingUrl.shortId}`
+    //         )}`
+    //     );
+    // }
     if (!body.ShortURL) 
         ShortURL = nanoid(8);
     else {
@@ -56,7 +64,7 @@ const handleToGetOriginalURL = async (req, res) => {
         }
     );
     if (docentry) return res.redirect(docentry.redirectURL);
-    return res.status(400).json({ error: "shortURL doesn't exist" });
+    return res.status(400).json({ error: "URL doesn't exist" });
 };
 
 const  handleGetAnalytics=async(req, res)=>{
